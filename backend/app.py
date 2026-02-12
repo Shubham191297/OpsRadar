@@ -4,7 +4,7 @@ from fieldData import field_data
 from sqlalchemy import create_engine,text
 from flask_cors import CORS
 
-engine = create_engine("postgresql+psycopg2://postgres:admin123@localhost/opsradar", echo=True)
+engine = create_engine("postgresql+psycopg2://postgres:admin123@host.docker.internal/opsradar", echo=True)
 
 # conn = psycopg2.connect(
 #     dbname="opsradar",
@@ -72,3 +72,6 @@ def createIncident():
         conn.commit()
 
     return "<p>Incident Details</p>"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
