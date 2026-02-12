@@ -1,0 +1,22 @@
+# dependencies
+frontend/opsradar/node_modules/
+frontend/opsradar/.pnp*
+ 
+# testing
+frontend/opsradar/coverage/
+
+# production
+frontend/opsradar/build/
+
+# env files
+frontend/opsradar/.env*.local
+
+# misc
+frontend/opsradar/.DS_Store
+frontend/opsradar/*debug.log*
+frontend/opsradar/*error.log*
+
+backend/.venv/
+backend/__pycache__/
+*.log
+.env
