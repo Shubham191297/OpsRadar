@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData, Form, redirect } from "react-router-dom";
 import UpdateFilter from "../layout/UpdateFilter";
+import { serverURL } from "../utils/serverURL";
 
 const IncidentView = () => {
   const { incident: incidentData, fieldOptions } = useLoaderData();
@@ -131,10 +132,10 @@ export default IncidentView;
 
 export async function loader({ params }) {
   const incidentId = params.incidentId;
-  const res = await fetch(`http://localhost:5000/incident/${incidentId}`);
+  const res = await fetch(`${serverURL}/incident/${incidentId}`);
   const incident = await res.json();
 
-  const result = await fetch(`http://localhost:5000/metadata`);
+  const result = await fetch(`${serverURL}/metadata`);
   const fieldOptions = await result.json();
 
   return { incident, fieldOptions };
@@ -149,7 +150,7 @@ export async function action({ request }) {
   const severity = formData.get("severity");
   const incidentId = formData.get("incidentId");
 
-  const res = await fetch(`http://localhost:5000/incident/${incidentId}`, {
+  const res = await fetch(`${serverURL}/incident/${incidentId}`, {
     method: request.method,
     body: JSON.stringify({
       status,

@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import { serverURL } from "../utils/serverURL";
 
 const HomePage = () => {
   const {
@@ -74,7 +75,7 @@ const HomePage = () => {
 export default HomePage;
 
 export async function loader() {
-  const res = await fetch("http://localhost:5000/incidents");
+  const res = await fetch(`${serverURL}/incidents`);
   const incidents = await res.json();
 
   const totalIncidents = incidents.length;

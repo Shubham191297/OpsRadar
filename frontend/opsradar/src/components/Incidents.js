@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { serverURL } from "../utils/serverURL";
 
 const Incidents = () => {
   const incidents = useLoaderData();
@@ -78,7 +79,7 @@ const Incidents = () => {
 export default Incidents;
 
 export async function loader() {
-  const result = await fetch("http://localhost:5000/incidents");
+  const result = await fetch(`${serverURL}/incidents`);
 
   const incidents = await result.json();
 

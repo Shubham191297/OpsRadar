@@ -2,6 +2,7 @@ import React from "react";
 import { useActionData, Form, redirect, useLoaderData } from "react-router-dom";
 import Input from "../layout/Input";
 import SelectFilter from "../layout/SelectFilter";
+import { serverURL } from "../utils/serverURL";
 
 const CreateIncident = () => {
   const errors = useActionData();
@@ -109,7 +110,7 @@ export async function action({ request }) {
   const tags = formData.get("tags");
   const severity = formData.get("severity");
 
-  const res = await fetch("http://localhost:5000/create-incident", {
+  const res = await fetch(`${serverURL}/create-incident`, {
     method: request.method,
     body: JSON.stringify({
       title,
@@ -131,7 +132,7 @@ export async function action({ request }) {
 }
 
 export async function loader() {
-  const res = await fetch("http://localhost:5000/metadata");
+  const res = await fetch(`${serverURL}/metadata`);
   const fieldData = await res.json();
   return fieldData;
 }

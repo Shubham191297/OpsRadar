@@ -1,10 +1,9 @@
 from flask import Flask,jsonify,request
 from fieldData import field_data
-# import psycopg2
 from sqlalchemy import create_engine,text
 from flask_cors import CORS
 
-engine = create_engine("postgresql+psycopg2://postgres:admin123@host.docker.internal/opsradar", echo=True)
+engine = create_engine("postgresql+psycopg2://postgres:admin123@opsradar-db/opsradar", echo=True)
 
 # conn = psycopg2.connect(
 #     dbname="opsradar",
