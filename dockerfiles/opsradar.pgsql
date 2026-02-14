@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 5UqCLGJNBgqFUi7onBp9pFcAOHnc9Iwi4b09s35JefrPPsdc2VGiyit4MfPwB0p
+\restrict aUvDFbfXedXRfo3yxUeeIXd3zUXxSRFwkd7o23jLqk6UH2mJqLAaLQk6TyYjlaL
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
@@ -79,16 +79,16 @@ ALTER TABLE ONLY public.incidents ALTER COLUMN id SET DEFAULT nextval('public.in
 --
 
 COPY public.incidents (title, description, creator, assignee, category, severity, service, status, tags, created_at, updated_at, id) FROM stdin;
-VM down	VM is unhealthy	parth	Shubham	VM	P0	VM	Acknowledged	infra,vmware	2026-02-11 19:15:50.779977+05:30	2026-02-12 17:35:34.750338+05:30	3
-Login API timeou	Users unable to login due to high latency	None	Shubham	Application	P1	auth-service	Investigating	auth,latency,login	2026-02-12 18:14:24.385167+05:30	2026-02-12 18:14:24.385167+05:30	9
-Database connection spike	Too many postgres connections observed	None	Parth	Infrastructure	P2	order-service	Acknowledged	postgres,connections	2026-02-12 18:26:18.835164+05:30	2026-02-12 18:26:18.835164+05:30	10
-Frontend blank screen	React UI not rendering dashboard widgets	None	Arjun	Application	P0	frontend-ui	Open	react,ui	2026-02-12 18:27:52.046153+05:30	2026-02-12 18:27:52.046153+05:30	11
-Inventory sync delay	Kafka lag causing delayed stock updates	None	Shubham	Application	P3	inventory-service	Resolved	kafka,lag	2026-02-12 18:30:16.483494+05:30	2026-02-12 18:30:16.483494+05:30	12
-Payment webhook failure	Stripe webhook not reaching backend	None	Shubham	Application	P1	payment-service	Investigating	stripe,webhook	2026-02-12 18:34:20.907871+05:30	2026-02-12 18:34:20.907871+05:30	13
-Search API slow queries	Elastic queries exceeding SLA	None	Parth	Database	P2	search-service	Acknowledged	elastic,query	2026-02-12 18:37:34.054444+05:30	2026-02-12 18:37:34.054444+05:30	14
-Notification queue backlog	RabbitMQ queue depth increasing rapidly	None	Dhananjay	Infrastructure	P2	notification-service	Open	rabbitmq,queue	2026-02-12 18:38:57.168829+05:30	2026-02-12 18:38:57.168829+05:30	15
-API Gateway 502 errors	Gateway returning intermittent bad gateway	None	Arjun	Network	P3	api-gateway	Closed	nginx,gateway	2026-02-12 18:40:30.837855+05:30	2026-02-12 18:40:30.837855+05:30	16
-Monitoring alerts missing	Prometheus alerts not firing correctly	None	Shubham	Infrastructure	P1	monitoring-stack	Open	prometheus,alerts	2026-02-12 18:41:58.036462+05:30	2026-02-12 18:41:58.036462+05:30	17
+Inventory sync delay	Kafka lag causing delayed stock updates	Shubham	Arjun	Application	P3	inventory-service	Resolved	kafka,lag	2026-02-12 18:30:16.483494+05:30	2026-02-12 18:30:16.483494+05:30	12
+Payment webhook failure	Stripe webhook not reaching backend	Shubham	Manish	Application	P1	payment-service	Investigating	stripe,webhook	2026-02-12 18:34:20.907871+05:30	2026-02-12 18:34:20.907871+05:30	13
+Search API slow queries	Elastic queries exceeding SLA	Manish	Parth	Database	P2	search-service	Acknowledged	elastic,query	2026-02-12 18:37:34.054444+05:30	2026-02-12 18:37:34.054444+05:30	14
+Notification queue backlog	RabbitMQ queue depth increasing rapidly	Shubham	Dhananjay	Infrastructure	P2	notification-service	Open	rabbitmq,queue	2026-02-12 18:38:57.168829+05:30	2026-02-12 18:38:57.168829+05:30	15
+API Gateway 502 errors	Gateway returning intermittent bad gateway	Parth	Arjun	Network	P3	api-gateway	Closed	nginx,gateway	2026-02-12 18:40:30.837855+05:30	2026-02-12 18:40:30.837855+05:30	16
+Monitoring alerts missing	Prometheus alerts not firing correctly	Dhananjay	Shubham	Infrastructure	P1	monitoring-stack	Open	prometheus,alerts	2026-02-12 18:41:58.036462+05:30	2026-02-12 18:41:58.036462+05:30	17
+VM down	VM is unhealthy	Parth	Shubham	VM	P0	VM	Acknowledged	infra,vmware	2026-02-11 19:15:50.779977+05:30	2026-02-12 17:35:34.750338+05:30	3
+Login API timeou	Users unable to login due to high latency	Manish	Shubham	Application	P1	auth-service	Investigating	auth,latency,login	2026-02-12 18:14:24.385167+05:30	2026-02-12 18:14:24.385167+05:30	9
+Database connection spike	Too many postgres connections observed	Shubham	Parth	Infrastructure	P2	order-service	Acknowledged	postgres,connections	2026-02-12 18:26:18.835164+05:30	2026-02-12 18:26:18.835164+05:30	10
+Frontend blank screen	React UI not rendering dashboard widgets	Arjun	Dhananjay	Application	P0	frontend-ui	Open	react,ui	2026-02-12 18:27:52.046153+05:30	2026-02-12 18:27:52.046153+05:30	11
 \.
 
 
@@ -111,5 +111,5 @@ ALTER TABLE ONLY public.incidents
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 5UqCLGJNBgqFUi7onBp9pFcAOHnc9Iwi4b09s35JefrPPsdc2VGiyit4MfPwB0p
+\unrestrict aUvDFbfXedXRfo3yxUeeIXd3zUXxSRFwkd7o23jLqk6UH2mJqLAaLQk6TyYjlaL
 

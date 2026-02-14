@@ -13,7 +13,7 @@ engine = create_engine("postgresql+psycopg2://postgres:admin123@opsradar-db/opsr
 # )
 
 app = Flask(__name__)
-CORS(app,origins=["http://localhost:3000"])
+CORS(app,origins=["http://localhost:3000","http://opsradar-react:80"])
 
 @app.route("/metadata")
 def getFieldData():
@@ -57,7 +57,7 @@ def createIncident():
     data = request.json
     title = data.get("title")
     description = data.get("description")
-    creator = data.get("cretor")
+    creator = data.get("creator")
     assignee = data.get("assignee")
     status = data.get("status")
     severity = data.get("severity")
