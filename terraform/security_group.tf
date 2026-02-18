@@ -21,9 +21,9 @@ resource "aws_vpc_security_group_ingress_rule" "opsradar_ssh_ingress_rule" {
 resource "aws_vpc_security_group_ingress_rule" "opsradar_nodeport_ingress_rule" {
   security_group_id = aws_security_group.opsradar_node_sg.id
   cidr_ipv4         = "0.0.0.0/0"
-  from_port         = 32008
+  from_port         = 30000
   ip_protocol       = "tcp"
-  to_port           = 32008
+  to_port           = 32767
 }
 
 resource "aws_vpc_security_group_ingress_rule" "opsradar_http_ingress_rule" {
@@ -32,6 +32,14 @@ resource "aws_vpc_security_group_ingress_rule" "opsradar_http_ingress_rule" {
   from_port         = 80
   ip_protocol       = "tcp"
   to_port           = 80
+}
+
+resource "aws_vpc_security_group_ingress_rule" "opsradar_argoui_ingress_rule" {
+  security_group_id = aws_security_group.opsradar_node_sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 8080
+  ip_protocol       = "tcp"
+  to_port           = 8080
 }
 
 resource "aws_vpc_security_group_ingress_rule" "opsradar_https_ingress_rule" {
