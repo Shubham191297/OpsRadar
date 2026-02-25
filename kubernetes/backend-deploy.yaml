@@ -1,12 +1,4 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: opsradar
-  labels:
-    name: opsradar
-
----
-apiVersion: v1
 kind: ConfigMap
 metadata:
   name: backend-config
