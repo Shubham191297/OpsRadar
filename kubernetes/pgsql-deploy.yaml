@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: opsradar
+  name: opsradar
+  labels:
+    app: opsradar
+    tier: db
+spec:
+  selector:
+    matchLabels:
+      app: opsradar
+      tier: db
+  serviceName: opsradar-postgre-svc
+  replicas: 2
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: opsradar
+        tier: db
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: opsradar-db
+          image: 691456441865.dkr.ecr.us-east-2.amazonaws.com/opsradar-postgre
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: opsradar-pvc
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: opsradar-pvc
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: standard
+        resources:
+          requests:
+            storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: opsradar
+  name: opsradar-postgre-svc
+  labels:
+    app: opsradar
+    tier: db
+spec:
+  clusterIP: None
+  selector:
+    app: opsradar
+    tier: db
+  ports:
+    - port: 5432
+      targetPort: 5432

@@ -8,8 +8,7 @@ RUN npm install
 
 COPY . .
 
-ENV REACT_APP_IMAGE_PATH="/api/"
-ENV REACT_APP_SERVER_URL="/api/"
+ENV REACT_APP_SERVER_URL="/api"
 
 RUN echo "Server URL is $REACT_APP_SERVER_URL"
 

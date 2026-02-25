@@ -2,8 +2,10 @@ from flask import Flask,jsonify,request
 from fieldData import field_data
 from sqlalchemy import create_engine,text
 from flask_cors import CORS
+from config import (OPSRADAR_POSTGRE_URL,OPSRADAR_DB_NAME,OPSRADAR_DB_USER,OPSRADAR_DB_PASSWORD,OPSRADAR_ALLOWED_ORIGINS,OPSRADAR_FRONTEND_URL,OPSRADAR_BASE_API_PATH)
 
-engine = create_engine("postgresql+psycopg2://postgres:admin123@opsradar-db/opsradar", echo=True)
+
+engine = create_engine(f"postgresql+psycopg2://{OPSRADAR_DB_USER}:{OPSRADAR_DB_PASSWORD}@{OPSRADAR_DB_URL}/{OPSRADAR_DB_NAME}", echo=True)
 
 # conn = psycopg2.connect(
 #     dbname="opsradar",
@@ -13,13 +15,13 @@ engine = create_engine("postgresql+psycopg2://postgres:admin123@opsradar-db/opsr
 # )
 
 app = Flask(__name__)
-CORS(app,origins=["http://localhost:3000","http://opsradar-react:80"])
+CORS(app,origins=OPSRADAR_ALLOWED_ORIGINS)
 
-@app.route("/metadata")
+@app.route(f"{OPSRADAR_BASE_API_PATH}/metadata")
 def getFieldData():
     return field_data
 
-@app.route("/incidents")
+@app.route(f"{OPSRADAR_BASE_API_PATH}/incidents")
 def getIncidentData():
     with engine.connect() as connector:
         result = connector.execute(text("SELECT * FROM incidents"))
@@ -30,7 +32,7 @@ def getIncidentData():
     # incidents = cur.fetchall()
         return data
 
-@app.route("/incident/<int:incident_id>")
+@app.route(f"{OPSRADAR_BASE_API_PATH}/incident/<int:incident_id>")
 def getIncidentDetails(incident_id):
     with engine.connect() as conn:
         result = conn.execute(text(f"SELECT * FROM incidents WHERE id = {incident_id}"))
@@ -39,7 +41,7 @@ def getIncidentDetails(incident_id):
         print(incident[0])
         return incident[0]
 
-@app.route("/incident/<int:incident_id>",methods=["PUT"])
+@app.route(f"{OPSRADAR_BASE_API_PATH}/incident/<int:incident_id>",methods=["PUT"])
 def editIncidentDetails(incident_id):
     updatedData = request.json
     statusValue = updatedData.get("status")
@@ -52,7 +54,7 @@ def editIncidentDetails(incident_id):
 
     return "<p>Incident updated</p>"
 
-@app.route("/create-incident", methods=["POST"])
+@app.route(f"{OPSRADAR_BASE_API_PATH}/create-incident", methods=["POST"])
 def createIncident():
     data = request.json
     title = data.get("title")

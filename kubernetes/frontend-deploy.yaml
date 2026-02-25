@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opsradar-frontend
+  namespace: opsradar
+  labels:
+    app: opsradar
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opsradar
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: opsradar
+        tier: frontend
+    spec:
+      containers:
+        - name: opsradar-frontend
+          image: 691456441865.dkr.ecr.us-east-2.amazonaws.com/opsradar-react
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: REACT_APP_SERVER_URL
+              value: "/api"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: "opsradar-frontend"
+  namespace: "opsradar"
+spec:
+  selector:
+    app: opsradar
+    tier: frontend
+  type: NodePort
+  ports:
+    - port: 3000
+      nodePort: 31000
+      targetPort: 80
