@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   namespace: opsradar
-  name: opsradar
+  name: opsradar-db
   labels:
     app: opsradar
     tier: db
