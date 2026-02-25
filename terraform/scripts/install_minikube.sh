@@ -5,7 +5,7 @@ FLAG_FILE="/tmp/minikube_setup_done"
 if [ ! -f "$FLAG_FILE" ]; then
 # Installing the kubectl on opsradar server node
 sudo apt-get update -y
-sudo apt-get install ca-certificates curl -y
+sudo apt-get install ca-certificates curl unzip -y
 
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"

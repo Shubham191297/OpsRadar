@@ -20,6 +20,8 @@ spec:
         app: opsradar
         tier: db
     spec:
+      imagePullSecrets:
+        - name: ecr-secret
       terminationGracePeriodSeconds: 10
       containers:
         - name: opsradar-db

@@ -18,6 +18,8 @@ spec:
         app: opsradar
         tier: frontend
     spec:
+      imagePullSecrets:
+        - name: ecr-secret
       containers:
         - name: opsradar-frontend
           image: 691456441865.dkr.ecr.us-east-2.amazonaws.com/opsradar-react
