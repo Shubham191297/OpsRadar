@@ -15,7 +15,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: backend-secret
-  namespace: showmate
+  namespace: opsradar
 type: generic
 stringData:
   DB_PASSWORD: "admin123"
