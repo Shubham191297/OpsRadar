@@ -24,3 +24,4 @@ backend/__pycache__/
 terraform/.terraform/
 terraform/*.tfstate
 terraform/*.tfstate.backup
+terraform/opsradar_keys/*
