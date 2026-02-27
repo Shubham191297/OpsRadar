@@ -16,3 +16,5 @@ kubectl patch svc argocd-server -n argocd   -p '{"spec":{"type":"NodePort","port
 
 kubectl create namespace opsradar
 kubectl create secret docker-registry ecr-secret   --docker-server=691456441865.dkr.ecr.us-east-2.amazonaws.com   --docker-username=AWS   --docker-password=$(aws ecr get-login-password --region us-east-2) -n opsradar
+
+argocd admin initial-password -n argocd
