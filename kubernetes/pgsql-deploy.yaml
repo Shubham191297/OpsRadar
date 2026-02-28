@@ -46,7 +46,7 @@ spec:
                   name: backend-config
           volumeMounts:
             - name: opsradar-pvc
-              mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/postgresql
   volumeClaimTemplates:
     - metadata:
         name: opsradar-pvc
