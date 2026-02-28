@@ -5,7 +5,7 @@ FLAG_FILE="/tmp/minikube_setup_done"
 if [ ! -f "$FLAG_FILE" ]; then
 # Installing the kubectl on opsradar server node
 sudo apt-get update -y
-sudo apt-get install ca-certificates curl unzip amazon-ecr-credential-helper -y
+sudo apt-get install ca-certificates curl unzip -y
 
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
@@ -45,7 +45,7 @@ sudo apt-get update -y
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
-sudo usermod -aG docker $USER
+sudo usermod -aG docker ubuntu
 
 sudo touch "$FLAG_FILE"
 sudo chown ubuntu:ubuntu "$FLAG_FILE"
@@ -54,6 +54,7 @@ exec sudo -u ubuntu -i bash "$0"
 
 fi
 
+
 # Installing minikube and starting the same
 
 curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
@@ -61,3 +62,4 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 rm minikube-linux-amd64
 
 minikube start --driver=docker --ports=32008:32008 --ports=31000:31000
+newgrp docker

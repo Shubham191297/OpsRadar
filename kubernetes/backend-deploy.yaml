@@ -47,6 +47,8 @@ spec:
         app: opsradar
         tier: backend
     spec:
+      imagePullSecrets:
+        - name: ecr-registry-helper
       containers:
         - name: opsradar-backend
           image: 691456441865.dkr.ecr.us-east-2.amazonaws.com/opsradar-python
