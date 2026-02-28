@@ -116,7 +116,12 @@ This script:
 
 ### 3️⃣ Application Deployment (GitOps)
 
-- Login to ArgoCD UI
+- Login to ArgoCD UI (use admin as username)
+
+```
+argocd admin initial-password -n argocd
+```
+
 - Create a new Application
 - Provide GitHub repository URL
 - Set manifest path to `kubernetes`
