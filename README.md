@@ -90,7 +90,7 @@ Terraform provisions:
 SSH into the EC2 instance and execute:
 
 ```bash
-bash install_minikube.sh
+./install_minikube.sh
 ```
 
 This script:
@@ -103,7 +103,7 @@ This script:
 Deploy ArgoCD:
 
 ```bash
-bash deploy_argocd.sh
+./deploy_argocd.sh
 ```
 
 This script:
@@ -119,7 +119,7 @@ This script:
 - Login to ArgoCD UI
 - Create a new Application
 - Provide GitHub repository URL
-- Set manifest path to `/kubernetes`
+- Set manifest path to `kubernetes`
 - Deploy application
 
 ArgoCD monitors the repository and synchronizes changes automatically (default reconciliation interval ~3 minutes when Auto-Sync is enabled).
@@ -128,8 +128,8 @@ ArgoCD monitors the repository and synchronizes changes automatically (default r
 
 ## 🌐 Port Configuration
 
-- `31000` → ArgoCD UI
-- `32008` → Application
+- `31000` → Application UI
+- `32008` → ArgoCD UI
 
 ---
 
