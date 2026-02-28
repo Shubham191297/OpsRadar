@@ -1,0 +1,3 @@
+# export ECR_CRED_VALUE=$(echo -n "{\"auths\":{\"$(aws sts get-caller-identity --query Account --output text).dkr.ecr.us-east-1.amazonaws.com\":{\"auth\":\"$(echo -n AWS:$(aws ecr get-login-password --region us-east-1) | base64 -w 0)\"}}}" | base64 -w 0)
+
+# kubectl create secret docker-registry ecr-registry-helper --docker-server=$(aws sts get-caller-identity --query Account --output text).dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password --region us-east-1) -n your-app-namespace --dry-run=client -o yaml | kubectl annotate --local -f - argocd.argoproj.io/sync-options=Prune=false -o yaml | kubectl apply -f -

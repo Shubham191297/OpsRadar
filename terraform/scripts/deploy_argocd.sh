@@ -15,6 +15,6 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
 kubectl patch svc argocd-server -n argocd   -p '{"spec":{"type":"NodePort","ports":[{"name":"http","port":80,"targetPort":8080,"nodePort":32008},{"name":"https","port":443,"targetPort":8080}]}}'
 
 kubectl create namespace opsradar
-kubectl create secret docker-registry ecr-secret   --docker-server=691456441865.dkr.ecr.us-east-2.amazonaws.com   --docker-username=AWS   --docker-password=$(aws ecr get-login-password --region us-east-2) -n opsradar
+kubectl create secret docker-registry ecr-registry-helper --docker-server=$(aws sts get-caller-identity --query Account --output text).dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password --region us-east-1) -n your-app-namespace --dry-run=client -o yaml | kubectl annotate --local -f - argocd.argoproj.io/sync-options=Prune=false -o yaml | kubectl apply -f -
 
 argocd admin initial-password -n argocd

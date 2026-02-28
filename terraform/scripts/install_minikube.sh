@@ -54,17 +54,6 @@ exec sudo -u ubuntu -i bash "$0"
 
 fi
 
-sudo mkdir -p /home/ubuntu/.docker
-sudo tee /home/ubuntu/.docker/config.json > /dev/null <<EOF
-{
-  "credsStore": "ecr-login"
-}
-EOF
-
-sudo chown -R ubuntu:ubuntu /home/ubuntu/.docker
-
-sudo systemctl restart docker
-
 # Installing minikube and starting the same
 
 curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
