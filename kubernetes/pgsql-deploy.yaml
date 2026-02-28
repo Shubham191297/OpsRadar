@@ -12,7 +12,7 @@ spec:
       app: opsradar
       tier: db
   serviceName: opsradar-postgre-svc
-  replicas: 2
+  replicas: 1
   minReadySeconds: 10
   template:
     metadata:
@@ -28,6 +28,22 @@ spec:
           image: 691456441865.dkr.ecr.us-east-2.amazonaws.com/opsradar-postgre
           ports:
             - containerPort: 5432
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: DB_PASSWORD
+                  name: backend-secret
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_NAME
+                  name: backend-config
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_USER
+                  name: backend-config
           volumeMounts:
             - name: opsradar-pvc
               mountPath: /var/lib/postgresql/data
