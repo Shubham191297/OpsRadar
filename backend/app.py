@@ -2,10 +2,10 @@ from flask import Flask,jsonify,request
 from fieldData import field_data
 from sqlalchemy import create_engine,text
 from flask_cors import CORS
-from config import (OPSRADAR_POSTGRE_URL,OPSRADAR_DB_NAME,OPSRADAR_DB_USER,OPSRADAR_DB_PASSWORD,OPSRADAR_ALLOWED_ORIGINS,OPSRADAR_FRONTEND_URL,OPSRADAR_BASE_API_PATH)
+from config import (OPSRADAR_POSTGRE_URL,POSTGRE_DB_NAME,POSTGRE_DB_USER,POSTGRE_DB_PASSWORD,OPSRADAR_ALLOWED_ORIGINS,OPSRADAR_BASE_API_PATH)
 
 
-engine = create_engine(f"postgresql+psycopg2://{OPSRADAR_DB_USER}:{OPSRADAR_DB_PASSWORD}@{OPSRADAR_DB_URL}/{OPSRADAR_DB_NAME}", echo=True)
+engine = create_engine(f"postgresql+psycopg2://{POSTGRE_DB_USER}:{POSTGRE_DB_PASSWORD}@{OPSRADAR_POSTGRE_URL}/{POSTGRE_DB_NAME}", echo=True)
 
 # conn = psycopg2.connect(
 #     dbname="opsradar",
