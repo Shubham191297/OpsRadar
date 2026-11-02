@@ -11,5 +11,5 @@ OPSRADAR_ALLOWED_ORIGINS = os.getenv("FRONTEND_URL", "http://localhost:3000,http
 # OPSRADAR_FRONTEND_URL = OPSRADAR_ALLOWED_ORIGINS[0]
 OPSRADAR_BASE_API_PATH = os.getenv("BASE_API_PATH","")
 
-# OPSRADAR_POSTGRE_URL = os.getenv("POSTGRE_DB_URL", "opsradar-db")
-OPSRADAR_POSTGRE_URL = os.getenv("POSTGRE_DB_URL", "localhost:5432")
+OPSRADAR_POSTGRE_URL = os.getenv("POSTGRE_DB_URL", "opsradar-db")
+# OPSRADAR_POSTGRE_URL = os.getenv("POSTGRE_DB_URL", "localhost:5432")

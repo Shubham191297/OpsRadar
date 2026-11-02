@@ -25,7 +25,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: opsradar-db
-          image: 691456441865.dkr.ecr.us-east-2.amazonaws.com/opsradar-postgre
+          image: 917553293196.dkr.ecr.us-east-2.amazonaws.com/opsradar-postgre
           ports:
             - containerPort: 5432
           env:

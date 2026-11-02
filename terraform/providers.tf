@@ -7,9 +7,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "opsradar-infra-state-bucket"
+    bucket = "opsradar-infra-state-bucket9"
     key    = "env/prod/terraform.tfstate"
-    region = "us-east-2"
+    region = "us-east-1"
   }
 }
 

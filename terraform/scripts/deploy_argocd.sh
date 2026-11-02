@@ -21,7 +21,7 @@ kubectl create namespace opsradar
 kubectl delete secret ecr-registry-helper -n opsradar || true
 
 kubectl create secret docker-registry ecr-registry-helper \
-  --docker-server=691456441865.dkr.ecr.us-east-2.amazonaws.com \
+  --docker-server=917553293196.dkr.ecr.us-east-2.amazonaws.com \
   --docker-username=AWS \
   --docker-password=$(aws ecr get-login-password --region us-east-2) \
   -n opsradar

@@ -22,7 +22,7 @@ spec:
         - name: ecr-registry-helper
       containers:
         - name: opsradar-frontend
-          image: 691456441865.dkr.ecr.us-east-2.amazonaws.com/opsradar-react
+          image: 917553293196.dkr.ecr.us-east-2.amazonaws.com/opsradar-react
           imagePullPolicy: Always
           ports:
             - containerPort: 80

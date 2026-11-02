@@ -51,7 +51,7 @@ spec:
         - name: ecr-registry-helper
       containers:
         - name: opsradar-backend
-          image: 691456441865.dkr.ecr.us-east-2.amazonaws.com/opsradar-python
+          image: 917553293196.dkr.ecr.us-east-2.amazonaws.com/opsradar-python
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
