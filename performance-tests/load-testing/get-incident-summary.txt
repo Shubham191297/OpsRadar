@@ -1,0 +1,58 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: get-incident-test.js
+        output: json (get-incident-results.json)
+
+     scenarios: (100.00%) 1 scenario, 5 max VUs, 10m30s max duration (incl. graceful stop):
+              * default: 5 iterations shared among 5 VUs (maxDuration: 10m0s, gracefulStop: 30s)
+
+
+running (00m01.0s), 5/5 VUs, 0 complete and 0 interrupted iterations
+default   [   0% ] 5 VUs  00m01.0s/10m0s  0/5 shared iters
+
+
+  █ THRESHOLDS 
+
+    http_req_duration
+    ✓ 'p(95)<100' p(95)=20.28ms
+
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 5       4.891092/s
+    checks_succeeded...: 100.00% 5 out of 5
+    checks_failed......: 0.00%   0 out of 5
+
+    ✓ is status 200 or 201
+
+    HTTP
+    http_req_duration..............: avg=16.43ms min=9.24ms med=19.78ms max=20.37ms p(90)=20.18ms p(95)=20.28ms
+      { expected_response:true }...: avg=16.43ms min=9.24ms med=19.78ms max=20.37ms p(90)=20.18ms p(95)=20.28ms
+    http_req_failed................: 0.00%  0 out of 5
+    http_reqs......................: 5      4.891092/s
+
+    EXECUTION
+    iteration_duration.............: avg=1.01s   min=1.01s  med=1.02s   max=1.02s   p(90)=1.02s   p(95)=1.02s  
+    iterations.....................: 5      4.891092/s
+    vus............................: 5      min=5      max=5
+    vus_max........................: 5      min=5      max=5
+
+    NETWORK
+    data_received..................: 2.8 kB 2.8 kB/s
+    data_sent......................: 450 B  440 B/s
+
+
+
+
+running (00m01.0s), 0/5 VUs, 5 complete and 0 interrupted iterations
+default ✓ [ 100% ] 5 VUs  00m01.0s/10m0s  5/5 shared iters

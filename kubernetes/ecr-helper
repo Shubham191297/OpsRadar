@@ -3,3 +3,10 @@
 # kubectl create secret docker-registry ecr-registry-helper --docker-server=$(aws sts get-caller-identity --query Account --output text).dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password --region us-east-1) -n your-app-namespace --dry-run=client -o yaml | kubectl annotate --local -f - argocd.argoproj.io/sync-options=Prune=false -o yaml | kubectl apply -f -
 
 # aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 917553293196.dkr.ecr.us-east-2.amazonaws.com
+
+kubectl patch deployment metrics-server -n kube-system --type='json' -p='[
+  {"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}
+]'
+
+
+watch -n 2 'kubectl top nodes; echo ""; kubectl top pods -n opsradar'

@@ -26,4 +26,7 @@ kubectl create secret docker-registry ecr-registry-helper \
   --docker-password=$(aws ecr get-login-password --region us-east-2) \
   -n opsradar
 
+echo "Waiting for ArgoCD to be ready..."
+sleep 30
+
 argocd admin initial-password -n argocd
