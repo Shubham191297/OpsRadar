@@ -1,3 +1,7 @@
+# Few results removed
+performance-tests/stress-testing/multiops-stress1k-results.json
+performance-tests/stress-testing/multiops-stress2k-results.json
+
 # dependencies
 frontend/opsradar/node_modules/
 frontend/opsradar/.pnp*
